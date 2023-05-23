@@ -7,8 +7,8 @@ const { useEffect, useState } = require("react");
 
 function Marvel() {
     const [marvel, setMarvel] = useState([]);
-    const publicKey = '9533fbe3808cffb0e01d59ef80d8c061';
-    const privateKey = '1913bfe348964439bb1cfa98fccd83ad18eadb9c';
+    const publicKey = '33c63c6a9d702b142f3c4e8f30c310e8';
+    const privateKey = '1fa93f9c5819b9eadfd590b3a9c64a52c8914408';
     const timestamp = new Date().getTime().toString();
     const hash = md5(timestamp + privateKey + publicKey);
     const url = `https://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
@@ -33,14 +33,14 @@ function Marvel() {
     return (
         <div>
             <h1>Marvel superheroes</h1>
-          {characters.map(character => (
-            <div key={character.id}>
-              <h3>{character.name}</h3>
-              <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
-            </div>
-          ))}
+            {characters.map(character => (
+                <div key={character.id}>
+                    <h3>{character.name}</h3>
+                    <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
+                </div>
+            ))}
         </div>
-      );
+    );
 }
 
 export default Marvel;
